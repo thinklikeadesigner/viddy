@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { env } from 'process';
+import { environment as env } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { APIResponse, Game } from './models';
 @Injectable({
@@ -18,7 +18,7 @@ export class HttpService {
     if (search) {
       params = new HttpParams().set('ordering', ordering).set('search', search);
     }
-    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games`, {
+    return this.http.get<APIResponse<Game>>(`${env.BASE_URL}/games?key=`, {
       params: params,
     });
   }
